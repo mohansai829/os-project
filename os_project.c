@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<pthread.h>
-#include<semaphore.h>
 pthread_mutex_t l1;
 static int c;
 void *game()
