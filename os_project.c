@@ -2,12 +2,11 @@
 #include<pthread.h>
 #include<semaphore.h>
 pthread_mutex_t l1;
-static int c=0;
-void game()
+static int c;
+void *game()
 {
 	pthread_mutex_lock(&l1);
-	c++;
-	printf("3 players are playing the game in the server and game no is :%d\n",c);
+	printf("3 players are playing the game in the server and game no is :%d\n",++c);
 	pthread_mutex_unlock(&l1);
 }
 int main()
@@ -40,7 +39,7 @@ int main()
     for(i=0;i<nop;i++)
     {
     pthread_t t1;
-	pthread_create(&t1,NULL,game,NULL);
+	pthread_create(&t1,NULL,*game,NULL);
      if((*(need+i)-avail)==0)
     	{
     	pthread_join(t1,NULL);	
