@@ -1,1 +1,1 @@
-# os-project
+# Bankers Algorithm
